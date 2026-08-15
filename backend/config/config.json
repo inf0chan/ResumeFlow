@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "resumemaker",
+    "host": "localhost",
+    "dialect": "mysql",
+    "config": {
+      "host": "localhost",
+      "dialect": "mysql",
+      "log": true
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": "",
+    "database": "resumemaker",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
