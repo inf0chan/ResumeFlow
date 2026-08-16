@@ -7,22 +7,15 @@ const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-
-config.host     = process.env.DB_HOST     || config.host;
-config.port     = process.env.DB_PORT     || config.port;
-config.username = process.env.DB_USER     || config.username;
-config.password = process.env.DB_PASSWORD || config.password;
-config.database = process.env.DB_NAME     || config.database;
-if (process.env.DB_HOST) {
-  config.dialectOptions = { ssl: { rejectUnauthorized: false } };
-}
-
 const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   port: config.port,
-  dialect: 'mysql'
+  dialect: 'mysql',
+  dialectOptions: {
+
+  }
 });
 
 sequelize.authenticate()

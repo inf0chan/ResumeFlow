@@ -9,7 +9,7 @@ import { AuthService } from '../core/auth.service';
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
     <header class="topnav">
-      <a routerLink="/dashboard" class="brand">Resume Loop</a>
+      <a routerLink="/dashboard" class="brand">ResumeFlow</a>
       <nav class="nav-links">
         <a routerLink="/dashboard" routerLinkActive="active"><span>▦</span>Dashboard</a>
         <a routerLink="/documents" routerLinkActive="active"><span>▤</span>Documents</a>

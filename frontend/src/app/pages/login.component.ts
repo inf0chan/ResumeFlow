@@ -11,7 +11,7 @@ import { AuthService } from '../core/auth.service';
   template: `
     <main class="auth-shell">
       <article class="card auth-card">
-        <span class="brand" style="text-align:center;">Resume Loop</span>
+        <span class="brand" style="text-align:center;">ResumeFlow</span>
 
         <ng-container *ngIf="mode === 'login'">
           <h2>Welcome back</h2>

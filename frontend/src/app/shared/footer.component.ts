@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="brand">Resume Loop</span>
+          <span class="brand">ResumeFlow</span>
           <p>Helping job seekers build resumes that get results.</p>
         </div>
         <div class="footer-col">
@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
           <a href="#">LinkedIn</a>
         </div>
       </div>
-      <div class="footer-bottom">© {{ year }} ResumeFlow. Built by Unishka Bisht. All rights reserved.</div>
+      <div class="footer-bottom">© {{ year }} ResumeFlow. Built by Himanshu Bisht. All rights reserved.</div>
     </footer>
   `,
 })

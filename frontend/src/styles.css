@@ -1,4 +1,4 @@
-/* ─── ResumeFlow / Resume Loop — app design system ──────────────────────────
+/* ─── ResumeFlow — app design system ─────────────────────────────────────────
    Layout & content: from the captured app screens (dashboard, documents,
    templates, applications, shares).
    Visual language: borrowed from inf0chan/resume-landing — dark theme,
@@ -79,7 +79,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .brand {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 26px;
   letter-spacing: 0.02em;
   background: linear-gradient(120deg, var(--accent), #7ff6d4 55%, var(--accent));
   -webkit-background-clip: text;
@@ -438,7 +438,7 @@ footer.site-footer {
 /* ─── Angular-specific additions ────────────────────────────────────────── */
 .auth-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
 .auth-card { width: 100%; max-width: 380px; padding: 32px; }
-.auth-card .brand { display: block; font-size: 22px; text-align: center; margin-bottom: 22px; }
+.auth-card .brand { display: block; font-size: 30px; text-align: center; margin-bottom: 22px; }
 .auth-card h2 { font-family: var(--font-display); font-weight: 400; font-size: 19px; margin: 0 0 6px; text-align: center; }
 .auth-card p.sub { text-align: center; color: var(--text-dim); font-size: 13px; margin: 0 0 24px; }
 .field { margin-bottom: 14px; }

@@ -1,4 +1,4 @@
-# Resume Loop
+# ResumeFlow
 
 ## Tech stack
 - **Frontend:** Angular, TypeScript, HTML5, CSS3
