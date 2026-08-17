@@ -1,16 +1,18 @@
 {
   "development": {
-    "username": "root",
-    "password": "A1pharomeo*",
-    "database": "resume_db",
-    "host": "127.0.0.1",
+    "username": "sql12835420",
+    "password": "bQdfaYiuWx",
+    "database": "sql12835420",
+    "host": "sql12.freesqldatabase.com",
+    "port": 3306,
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "[PASSWORD]",
-    "database": "resume_db",
-    "host": "127.0.0.1",
+    "username": "sql12835420",
+    "password": "bQdfaYiuWx",
+    "database": "sql12835420",
+    "host": "sql12.freesqldatabase.com",
+    "port": 3306,
     "dialect": "mysql"
   }
 }
