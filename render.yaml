@@ -1,7 +1,7 @@
 services:
   - type: web
     name: resumeflow-api
-    runtime: node
+    runtime: nodejs
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start
@@ -11,12 +11,14 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: DB_HOST
-        sync: false
+        value: sql12.freesqldatabase.com
       - key: DB_PORT
         value: "3306"
       - key: DB_NAME
-        value: "resumeflow"
+        value: sql12835420
       - key: DB_USER
-        sync: false
+        value: sql12835420
       - key: DB_PASSWORD
+        value: bQdfaYiuWx
+      - key: FRONTEND_URL
         sync: false
