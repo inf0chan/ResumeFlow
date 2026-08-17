@@ -28,7 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     type: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    templateId: DataTypes.INTEGER
+    templateId: DataTypes.INTEGER,
+    authorName: DataTypes.STRING,
+    authorEmail: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'document',

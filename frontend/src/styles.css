@@ -513,3 +513,28 @@ footer.site-footer {
 .preview-card li::before { content: "–"; position: absolute; left: 0; color: #14b891; }
 
 .empty-editor { text-align: center; padding: 40px; color: var(--text-faint); font-size: 13px; }
+
+.author-fields {
+  display: flex; gap: 12px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 16px;
+}
+.author-row { flex: 1; }
+.author-row label { display: block; font-size: 11.5px; color: var(--text-faint); margin-bottom: 5px; }
+.author-row input {
+  width: 100%; background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); padding: 9px 11px; font-size: 13.5px;
+}
+
+/* ─── Modals ───────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100;
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 32px; width: 100%; max-width: 420px; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+.modal-card h2 { font-family: var(--font-display); font-weight: 400; font-size: 20px; margin: 0 0 6px; text-align: center; }
+.modal-card .sub { text-align: center; color: var(--text-dim); font-size: 13px; margin: 0 0 20px; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }

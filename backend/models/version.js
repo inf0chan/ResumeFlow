@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   version.init({
     snapshot: DataTypes.TEXT,
     label: DataTypes.STRING,
-    documentId: DataTypes.STRING
+    documentId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'version',

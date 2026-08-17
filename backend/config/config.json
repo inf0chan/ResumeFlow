@@ -8,7 +8,7 @@
   },
   "production": {
     "username": "root",
-    "password": "A1pharomeo*",
+    "password": "[PASSWORD]",
     "database": "resume_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

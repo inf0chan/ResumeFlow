@@ -19,11 +19,12 @@ router.get('/me', async (req, res) => {
 
 // PATCH /api/users/me — used by the "Profile" screen
 router.patch('/me', async (req, res) => {
-  const { name, photo } = req.body;
+  const { name, email, photo } = req.body;
   const found = await user.findByPk(req.userId);
   if (!found) return res.status(404).json({ success: false, message: 'User not found' });
 
   if (name !== undefined) found.name = name;
+  if (email !== undefined) found.email = email;
   if (photo !== undefined) found.photo = photo;
   await found.save();
 

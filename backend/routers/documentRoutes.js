@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { document, template } = require('../models');
+const { document, template, user } = require('../models');
 const { requireAuth } = require('../middleware/auth');
 
 router.use(requireAuth);
@@ -45,14 +45,17 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/documents — "New document" / "Use this template"
 router.post('/', async (req, res) => {
-  const { title, type, templateId } = req.body;
+  const { title, type, templateId, authorName, authorEmail } = req.body;
   if (!title) return res.status(400).json({ success: false, message: 'title is required' });
 
+  const profile = await user.findByPk(req.userId);
   const created = await document.create({
     title,
     type: type || 'resume',
     templateId: templateId || null,
     userId: req.userId,
+    authorName: authorName || (profile ? profile.name : null),
+    authorEmail: authorEmail || (profile ? profile.email : null),
   });
   res.status(201).json({ success: true, document: created });
 });
@@ -61,10 +64,12 @@ router.patch('/:id', async (req, res) => {
   const found = await document.findOne({ where: { id: req.params.id, userId: req.userId } });
   if (!found) return res.status(404).json({ success: false, message: 'Document not found' });
 
-  const { title, type, templateId } = req.body;
+  const { title, type, templateId, authorName, authorEmail } = req.body;
   if (title !== undefined) found.title = title;
   if (type !== undefined) found.type = type;
   if (templateId !== undefined) found.templateId = templateId;
+  if (authorName !== undefined) found.authorName = authorName;
+  if (authorEmail !== undefined) found.authorEmail = authorEmail;
   await found.save();
 
   res.json({ success: true, document: found });
@@ -80,6 +85,8 @@ router.post('/:id/duplicate', async (req, res) => {
     type: found.type,
     templateId: found.templateId,
     userId: req.userId,
+    authorName: found.authorName,
+    authorEmail: found.authorEmail,
   });
   res.status(201).json({ success: true, document: copy });
 });

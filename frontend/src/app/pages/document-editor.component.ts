@@ -24,7 +24,7 @@ type Tab = 'editor' | 'versions' | 'sharing' | 'exports';
           <h1>{{ doc.title }}</h1>
         </div>
         <div class="head-actions">
-          <button class="btn" (click)="renameDocument()">⚙ Settings</button>
+          <button class="btn" (click)="renameDocument()">⚙ Rename</button>
           <button class="btn" (click)="printView()">🖶 Print view</button>
           <button class="btn btn-primary" (click)="exportDocument()">⇩ Export</button>
         </div>
@@ -41,6 +41,17 @@ type Tab = 'editor' | 'versions' | 'sharing' | 'exports';
       <!-- ─── Editor tab ─────────────────────────────────────────────────── -->
       <div class="editor-layout" *ngIf="tab === 'editor'">
         <div>
+          <div class="author-fields">
+            <div class="author-row">
+              <label>Full name</label>
+              <input type="text" placeholder="e.g. Jane Smith" [ngModel]="doc!.authorName || ''" (ngModelChange)="doc!.authorName = $event" (blur)="saveAuthorInfo()" />
+            </div>
+            <div class="author-row">
+              <label>Email</label>
+              <input type="email" placeholder="e.g. jane@example.com" [ngModel]="doc!.authorEmail || ''" (ngModelChange)="doc!.authorEmail = $event" (blur)="saveAuthorInfo()" />
+            </div>
+          </div>
+
           <div class="add-section-input">
             <input type="text" placeholder="Add a section" [(ngModel)]="newSectionHeading" (keyup.enter)="addSection()" />
             <button (click)="addSection()">⊕</button>
@@ -76,9 +87,9 @@ type Tab = 'editor' | 'versions' | 'sharing' | 'exports';
 
         <!-- ─── Live preview ─────────────────────────────────────────────── -->
         <div class="preview-card">
-          <h1>{{ firstName() }} <span class="accent">{{ lastName() }}</span></h1>
-          <div class="role">{{ doc.title | uppercase }}</div>
-          <div class="contact-line">{{ auth.currentUser()?.email }}</div>
+          <h1>{{ authorFirst() }} <span class="accent">{{ authorLast() }}</span></h1>
+          <div class="role">{{ doc!.title | uppercase }}</div>
+          <div class="contact-line">{{ doc!.authorEmail || '' }}</div>
 
           <ng-container *ngFor="let section of sections">
             <ng-container *ngIf="(section.items || []).length">
@@ -178,14 +189,19 @@ export class DocumentEditorComponent implements OnInit {
 
   back() { this.router.navigate(['/documents']); }
 
-  firstName(): string { return this.auth.currentUser()?.name?.split(' ')[0] || ''; }
-  lastName(): string { const parts = this.auth.currentUser()?.name?.split(' ') || []; return parts.slice(1).join(' '); }
+  authorFirst(): string { return this.doc?.authorName?.split(' ')[0] || ''; }
+  authorLast(): string { return this.doc?.authorName?.split(' ').slice(1).join(' ') || ''; }
 
   renameDocument() {
     if (!this.doc) return;
     const title = prompt('Document title:', this.doc.title);
     if (!title) return;
     this.api.updateDocument(this.doc.id, { title }).subscribe(res => (this.doc = res.document));
+  }
+
+  saveAuthorInfo() {
+    if (!this.doc) return;
+    this.api.updateDocument(this.doc.id, { authorName: this.doc.authorName, authorEmail: this.doc.authorEmail } as any).subscribe();
   }
 
   printView() { window.print(); }

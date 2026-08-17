@@ -20,6 +20,8 @@ export interface Doc {
   userId: number;
   templateId: number | null;
   template?: Template | null;
+  authorName?: string | null;
+  authorEmail?: string | null;
   createdAt: string;
   updatedAt: string;
 }

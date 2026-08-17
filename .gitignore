@@ -3,6 +3,8 @@ node_modules/
 
 # builds
 frontend/dist/
+backend/public/
+frontend/.angular/
 
 # environment / secrets
 backend/.env
