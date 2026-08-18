@@ -2,7 +2,7 @@
   "name": "resumeflow",
   "private": true,
   "scripts": {
-    "build": "cd frontend && npm install && node node_modules/@angular/cli/bin/ng.js build",
+    "build": "cd frontend && npm install --include=dev && node node_modules/@angular/cli/bin/ng.js build",
     "install:all": "cd frontend && npm install && cd ../backend && npm install"
   },
   "dependencies": {
