@@ -14,13 +14,19 @@ const dbConfig = {
   username: process.env.DB_USER || config.username,
   password: process.env.DB_PASSWORD || config.password,
   host: process.env.DB_HOST || config.host,
-  port: process.env.DB_PORT || config.port,
+  port: parseInt(process.env.DB_PORT, 10) || config.port || 5432,
   dialect: 'postgres',
   dialectOptions: {
     ssl: {
       require: true,
       rejectUnauthorized: false,
     },
+  },
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
   },
 };
 
@@ -33,6 +39,7 @@ const sequelize = new Sequelize(
     port: dbConfig.port,
     dialect: dbConfig.dialect,
     dialectOptions: dbConfig.dialectOptions,
+    pool: dbConfig.pool,
   }
 );
 
