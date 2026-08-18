@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "cd frontend && npm install && node node_modules/@angular/cli/bin/ng.js build",
   "outputDirectory": "frontend/dist/resumeflow-frontend/browser",
   "installCommand": "npm install",
   "rewrites": [
