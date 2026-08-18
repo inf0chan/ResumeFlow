@@ -28,9 +28,14 @@ app.get(/^(?!\/api).*/, (_req, res) => {
   res.sendFile(path.join(angularDist, 'index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-  console.log(`  App:  http://localhost:${PORT}`);
-  console.log(`  API:  http://localhost:${PORT}/api`);
-});
+// Export app for Vercel serverless; listen only when running directly
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+    console.log(`  App:  http://localhost:${PORT}`);
+    console.log(`  API:  http://localhost:${PORT}/api`);
+  });
+}
+
+module.exports = app;

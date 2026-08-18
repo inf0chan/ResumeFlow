@@ -9,14 +9,30 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+const dbConfig = {
+  database: process.env.DB_NAME || config.database,
+  username: process.env.DB_USER || config.username,
+  password: process.env.DB_PASSWORD || config.password,
+  host: process.env.DB_HOST || config.host,
+  port: process.env.DB_PORT || config.port,
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+};
+
 const sequelize = new Sequelize(
-  process.env.DB_NAME || config.database,
-  process.env.DB_USER || config.username,
-  process.env.DB_PASSWORD || config.password,
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password,
   {
-    host: process.env.DB_HOST || config.host,
-    port: process.env.DB_PORT || config.port,
-    dialect: 'mysql',
+    host: dbConfig.host,
+    port: dbConfig.port,
+    dialect: dbConfig.dialect,
+    dialectOptions: dbConfig.dialectOptions,
   }
 );
 

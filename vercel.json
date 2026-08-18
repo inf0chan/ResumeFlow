@@ -1,8 +1,12 @@
 {
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist/resumeflow-frontend/browser",
-  "installCommand": "cd frontend && npm install",
+  "installCommand": "npm install",
   "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
     {
       "source": "/((?!api/).*)",
       "destination": "/index.html"

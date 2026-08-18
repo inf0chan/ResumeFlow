@@ -1,18 +1,30 @@
 {
   "development": {
-    "username": "sql12835420",
-    "password": "bQdfaYiuWx",
-    "database": "sql12835420",
-    "host": "sql12.freesqldatabase.com",
-    "port": 3306,
-    "dialect": "mysql"
+    "username": "postgres.aiskhxajmtxeajeanzqq",
+    "password": "A1pharomeo112*",
+    "database": "postgres",
+    "host": "aws-0-ap-southeast-1.pooler.supabase.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "production": {
-    "username": "sql12835420",
-    "password": "bQdfaYiuWx",
-    "database": "sql12835420",
-    "host": "sql12.freesqldatabase.com",
-    "port": 3306,
-    "dialect": "mysql"
+    "username": "postgres.aiskhxajmtxeajeanzqq",
+    "password": "A1pharomeo112*",
+    "database": "postgres",
+    "host": "aws-0-ap-southeast-1.pooler.supabase.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

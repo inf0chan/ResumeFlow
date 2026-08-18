@@ -1,6 +1,6 @@
-// After deploying your backend to Render, replace the URL below
-// with your actual Render service URL (e.g. https://resumeflow-api-xxxx.onrender.com/api).
+// Frontend and API are served by the same Vercel deployment,
+// so the API is always same-origin — no base URL to configure per env.
 export const environment = {
   production: true,
-  apiUrl: 'https://resumeflow-api.onrender.com/api',
+  apiUrl: '/api',
 };
