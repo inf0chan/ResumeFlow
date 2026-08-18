@@ -15,18 +15,14 @@ app.use(express.json());
 // ─── API ───────────────────────────────────────────────────────────────────
 app.use('/api', routers);
 
-// ─── Frontend ──────────────────────────────────────────────────────────────
-// Angular's production build (`ng build`) outputs here. Run that from
-// /frontend before starting this server (see README).
-const angularDist = path.join(__dirname, 'public');
-app.use(express.static(angularDist));
-
-// Angular is a client-side-routed SPA: every non-API path serves index.html
-// and Angular's own router takes it from there (including /login, /r/:slug,
-// /documents/:id, etc).
-app.get(/^(?!\/api).*/, (_req, res) => {
-  res.sendFile(path.join(angularDist, 'index.html'));
-});
+// ─── Frontend (local only, not on Vercel) ────────────────────────────────
+if (!process.env.VERCEL) {
+  const angularDist = path.join(__dirname, 'public');
+  app.use(express.static(angularDist));
+  app.get(/^(?!\/api).*/, (_req, res) => {
+    res.sendFile(path.join(angularDist, 'index.html'));
+  });
+}
 
 // Export app for Vercel serverless; listen only when running directly
 if (!process.env.VERCEL) {
