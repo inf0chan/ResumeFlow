@@ -2,6 +2,10 @@
   "buildCommand": "cd frontend && npm install --include=dev && node node_modules/@angular/cli/bin/ng.js build",
   "outputDirectory": "frontend/dist/resumeflow-frontend/browser",
   "installCommand": "npm install",
+  "outputFileTracesInclude": [
+    "api/**",
+    "backend/**"
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
